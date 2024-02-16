@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Single Page Application</title>
+<style>
+    /* Estilos opcionais */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    nav {
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+    }
+    nav ul {
+        list-style: none;
+        padding: 0;
+    }
+    nav ul li {
+        display: inline;
+        margin-right: 10px;
+    }
+    section {
+        padding: 20px;
+    }
+</style>
+</head>
+<body>
+
+<nav>
+    <ul>
+        <li><a href="#" onclick="navigateTo('home')">Home</a></li>
+        <li><a href="#" onclick="navigateTo('about')">About</a></li>
+        <li><a href="#" onclick="navigateTo('contact')">Contact</a></li>
+    </ul>
+</nav>
+
+<section id="content">
+    <!-- Conteúdo será carregado aqui -->
+</section>
+
+<script>
+    // Função para carregar o conteúdo de uma página
+    function loadPage(pageName) {
+        // Aqui você pode usar Ajax ou Fetch para carregar conteúdo de uma página externa
+        // Mas para simplificar, apenas vamos definir o conteúdo manualmente
+        const pages = {
+            home: "<h2>Home</h2><p>Welcome to the home page!</p>",
+            about: "<h2>About</h2><p>Learn more about us!</p>",
+            contact: "<h2>Contact</h2><p>Get in touch with us!</p>"
+        };
+
+        return pages[pageName] || "<h2>Error 404</h2><p>Page not found!</p>";
+    }
+
+    // Função para navegar entre as páginas
+    function navigateTo(pageName) {
+        const content = document.getElementById('content');
+        content.innerHTML = loadPage(pageName);
+    }
+
+    // Carregar a página inicial
+    navigateTo('home');
+</script>
+
+</body>
+</html>
